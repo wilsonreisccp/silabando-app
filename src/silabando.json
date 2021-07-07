@@ -1,0 +1,123 @@
+{
+  "nivel1": [
+    {
+      "palavra": "canudo",
+      "imgURL": "https://i.postimg.cc/505zm3WS/canudo.png",
+      "silabas": [
+        ["0","  ","CA"],
+        ["1","  ","NU"],
+        ["2","  ","DO"]
+      ],
+      "possibilidades": [
+        "TA",
+        "NU",
+        "DO",
+        "CA",
+        "PA"
+      ]
+    },
+    {
+      "palavra": "caneta",
+      "imgURL": "https://i.postimg.cc/V6PMMhpN/caneta.png",
+      "silabas": [
+        ["0","  ","CA"],
+        ["1","  ","NE"],
+        ["2","  ","TA"]
+      ],
+      "possibilidades": [
+        "NE",
+        "TA",
+        "BA",
+        "LE",
+        "CA"
+      ]
+    },
+    {
+      "palavra": "banana",
+      "imgURL": "https://i.postimg.cc/VvYCZCYQ/banana.png",
+      "silabas": [
+        ["0","  ","BA"],
+        ["1","  ","NA"],
+        ["2","  ","NA"]
+      ],
+      "possibilidades": [
+        "NA",
+        "BU",
+        "BA",
+        "CA",
+        "NA"
+      ]
+    },
+    {
+      "palavra": "abacate",
+      "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
+      "silabas": [
+        ["0","  ","A"],
+        ["1","  ","BA"],
+        ["2","  ","CA"],
+        ["3","  ","TE"]
+      ],
+      "possibilidades": [
+        "TE",
+        "BU",
+        "A",
+        "CA",
+        "BA"
+      ]
+    },
+    {
+      "palavra": "cano",
+      "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
+      "silabas": [
+        ["0","  ","CA"],
+        ["1","  ","NO"]
+      ],
+      "possibilidades": [
+        "JO",
+        "NO",
+        "AC",
+        "CA",
+        "BA"
+      ]
+    },
+    {
+      "palavra": "menina",
+      "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
+      "silabas": [
+        ["0","  ","ME"],
+        ["1","  ","NI"],
+        ["3","  ","NA"]
+      ],
+      "possibilidades": [
+        "GO",
+        "NI",
+        "NA",
+        "CA",
+        "ME"
+      ]
+    },
+    {
+      "palavra": "hipopótamo",
+      "imgURL": "https://i.postimg.cc/9FX8bDt7/hipopotamo.png",
+      "silabas": [
+        ["0","  ","HI"],
+        ["1","  ","PO"],
+        ["2","  ","PÓ"],
+        ["3","  ","TA"],
+        ["4","  ","MO"]
+      ],
+      "possibilidades": [
+        "PO",
+        "TA",
+        "HI",
+        "DA",
+        "MO",
+        "BA",
+        "PÓ",
+        "GI"
+      ]
+    }
+  ],
+  "nivel2": [],
+  "nivel3": []
+}

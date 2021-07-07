@@ -1,0 +1,47 @@
+      <Droppable
+        onEnter={() => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          animateValue(trashIconScale, 1.2);
+        }}
+        onLeave={() => {
+          animateValue(trashIconScale, 1);
+        }}
+        onDrop={({ payload }) => {
+          setItems(items.filter(item => item !== payload));
+        }}
+      >
+        {({ active, viewProps }) => {
+          return (
+            <Animated.View
+              {...viewProps}
+              style={[
+                {
+                  opacity: droppableOpacity.current,
+                  backgroundColor: active
+                    ? "rgba(0,0,0,0.4)"
+                    : "rgba(0,0,0,0.3)"
+                },
+                viewProps.style,
+                styles.droppableArea
+              ]}
+            >
+              <Text style={styles.droppableText}>Drag to delete</Text>
+              <Animated.View
+                style={[
+                  {
+                    transform: [
+                      {
+                        scale: trashIconScale.current
+                      }
+                    ]
+                  },
+                  styles.trashIconWrapper
+                ]}
+              >
+                <Feather name="trash-2" size={24} color="white" />
+              </Animated.View>
+            </Animated.View>
+          );
+        }}
+      </Droppable>
+  

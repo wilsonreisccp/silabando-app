@@ -18,8 +18,7 @@ export function Nivel1() {
           style={styles.palavraImg}
         ></Image>
       </View>
-      
-
+  
       <View style={{flex: 1,       
                     justifyContent: 'space-evenly', 
                     alignContent: 'flex-end',
@@ -30,7 +29,6 @@ export function Nivel1() {
                     borderColor: "#20232a",
                     borderRadius: 6,
                     maxHeight: 150
-                    //paddingBottom: 'auto'
                    }
                   }>
         <View style={ styles.dropzones }></View>
@@ -70,8 +68,6 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 410,
     height: 200,
-    
-    
   },
 
   dropzones: {

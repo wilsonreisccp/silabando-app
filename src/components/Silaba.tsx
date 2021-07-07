@@ -16,8 +16,8 @@ export function Silaba(props: Silaba) {
 
 const styles = StyleSheet.create({
     container: {
-      width: 40,
-      margin: 5,
+      width: 50,
+      padding: 5,
       borderWidth: 4,
       borderColor: "#20232a",
       borderRadius: 6,
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   
     texto: {
       textAlign: 'center',
-      marginVertical: 5,
-      marginBottom: 5,
+      paddingVertical: 5,
+      paddingBottom: 5,
       fontSize: 20
     },
   });
