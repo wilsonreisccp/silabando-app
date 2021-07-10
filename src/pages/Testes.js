@@ -78,7 +78,6 @@ export function Testes() {
                       <Text style={{ color: "#333", fontWeight: "bold", fontSize: 25 }}>
                         {s[1]}
                       </Text>
-
                     </Animated.View>
                   );
                 }}
