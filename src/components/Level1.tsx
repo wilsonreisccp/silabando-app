@@ -9,33 +9,30 @@ import {
 } from "react-native";
 
 import { Icon } from 'react-native-elements'
-
 import { createDndContext } from "react-native-easy-dnd";
+
 import data from '../silabando.json'
-import { useNavigation } from "@react-navigation/native";
 
-const palavra = Math.floor(Math.random() * (6 - 0))
-
-const image = { uri: data.nivel1[palavra].imgURL };
 const { Provider, Droppable, Draggable } = createDndContext();
 
-export function Testes() {
-  const navigation = useNavigation()
+export function Level1() {
 
-  function handleRefresh() {
-    navigation.navigate('Nivel Um')
-  }
-
-
-  const [, updateState] = useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
-
+  const [palavra, setPalavra] = useState(Math.floor(Math.random() * (data.nivel1.length)));
+  const image = { uri: data.nivel1[palavra].imgURL };
 
   let sl = data.nivel1[palavra].silabas
   let possibilidades = data.nivel1[palavra].possibilidades
 
   const [silabas, setSilabas] = useState(sl);
   const [items, setItems] = useState(possibilidades);
+
+  function nextPalavra(){
+    let nextPalavra = Math.floor(Math.random() * (data.nivel1.length))
+    
+    setPalavra(nextPalavra)
+    setSilabas(data.nivel1[nextPalavra].silabas)
+    setItems(data.nivel1[nextPalavra].possibilidades)
+  }
 
   return (
     <>
@@ -62,33 +59,29 @@ export function Testes() {
           </View>
 
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            {silabas.map((s, index) => (
+            {silabas.map((s: any, index) => (
               <Droppable
                 key={index}
 
-                onEnter={() => {
-                  console.log("Entrou como: ")
-                }}
+                onEnter={() => { }}
                 onLeave={() => { }}
+
                 onDrop={({ payload }) => {
-                  console.log(payload)
                   if (payload[0] == s[2]) {
                     sl[s[0]][1] = s[2]
                     setSilabas(sl)
-                    possibilidades[payload[1]] = "    "
+                    possibilidades[payload[1]] = "   "
                     setItems([...possibilidades])
-                  } else {
-                    console.log(payload + " ---- " + s[2])
                   }
                 }}
               >
-                {({ active, viewProps }) => {
+                {({ viewProps }) => {
                   return (
                     <Animated.View
                       {...viewProps}
                       style={[viewProps.style, styles.droppable]}
                     >
-                      <Text style={{ color: "#333", fontWeight: "bold", fontSize: 25 }}>
+                      <Text style={ styles.droppableText }>
                         {s[1]}
                       </Text>
                     </Animated.View>
@@ -121,7 +114,7 @@ export function Testes() {
                       {...viewProps}
                       style={[viewProps.style, styles.draggable]}
                     >
-                      <Text style={{ textAlign: 'center', color: "#333", fontWeight: "bold" }}>
+                      <Text style={styles.draggableText}>
                         {item}
                       </Text>
                     </Animated.View>
@@ -131,12 +124,14 @@ export function Testes() {
             ))}
           </View>
 
-        </View>
-        <View>
-          <Button
-            title="Press me"
-            onPress={updateState()}
-          />
+          <View style={{ marginBottom: 60 }}>
+            <Text>{palavra}</Text>
+            <Button
+              title={'Alterar'}
+              onPress={ nextPalavra  }
+            />
+          </View>
+
         </View>
       </Provider>
     </>
@@ -175,6 +170,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
 
+  draggableText: {
+    textAlign: 'center', 
+    color: "#333", 
+    fontWeight: "bold"
+  },
+
   droppable: {
     alignItems: "center",
     justifyContent: "center",
@@ -191,6 +192,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 10,
     backgroundColor: "white"
+  },
+
+  droppableText:{
+    color: "#333", 
+    fontWeight: "bold", 
+    fontSize: 25
   },
 
   texto: {

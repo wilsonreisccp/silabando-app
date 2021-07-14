@@ -14,6 +14,11 @@
         "DO",
         "CA",
         "PA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
       ]
     },
     {
@@ -30,6 +35,11 @@
         "BA",
         "LE",
         "CA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
       ]
     },
     {
@@ -46,13 +56,18 @@
         "BA",
         "CA",
         "NA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
       ]
     },
     {
       "palavra": "abacate",
       "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
       "silabas": [
-        ["0","  ","A"],
+        ["0","   "," A "],
         ["1","  ","BA"],
         ["2","  ","CA"],
         ["3","  ","TE"]
@@ -60,14 +75,20 @@
       "possibilidades": [
         "TE",
         "BU",
-        "A",
+        " A ",
         "CA",
         "BA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   ",
+        "   "
       ]
     },
     {
       "palavra": "cano",
-      "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
+      "imgURL": "https://i.postimg.cc/jS6hPtKt/cano.png",
       "silabas": [
         ["0","  ","CA"],
         ["1","  ","NO"]
@@ -78,15 +99,19 @@
         "AC",
         "CA",
         "BA"
+      ],
+      "drop": [
+        "   ",
+        "   "
       ]
     },
     {
       "palavra": "menina",
-      "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
+      "imgURL": "https://i.postimg.cc/0y1fzrTV/menina.png",
       "silabas": [
         ["0","  ","ME"],
         ["1","  ","NI"],
-        ["3","  ","NA"]
+        ["2","  ","NA"]
       ],
       "possibilidades": [
         "GO",
@@ -94,6 +119,11 @@
         "NA",
         "CA",
         "ME"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
       ]
     },
     {
@@ -114,7 +144,14 @@
         "MO",
         "BA",
         "PÓ",
-        "GI"
+        "WI"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   ",
+        "   ",
+        "   "
       ]
     }
   ],
