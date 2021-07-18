@@ -8,6 +8,7 @@ import {
   Button
 } from "react-native";
 
+import { useNavigation } from '@react-navigation/native'
 import { Icon } from 'react-native-elements'
 import { createDndContext } from "react-native-easy-dnd";
 
@@ -16,8 +17,8 @@ import data from '../silabando.json'
 const { Provider, Droppable, Draggable } = createDndContext();
 
 export function Level1() {
-
-  const [palavra, setPalavra] = useState(Math.floor(Math.random() * (data.nivel1.length)));
+  const navigation = useNavigation();
+  const palavra = Math.floor(Math.random() * (data.nivel1.length));
   const image = { uri: data.nivel1[palavra].imgURL };
 
   let sl = data.nivel1[palavra].silabas
@@ -26,12 +27,9 @@ export function Level1() {
   const [silabas, setSilabas] = useState(sl);
   const [items, setItems] = useState(possibilidades);
 
-  function nextPalavra(){
-    let nextPalavra = Math.floor(Math.random() * (data.nivel1.length))
-    
-    setPalavra(nextPalavra)
-    setSilabas(data.nivel1[nextPalavra].silabas)
-    setItems(data.nivel1[nextPalavra].possibilidades)
+  function nextWord(){
+    const pageKey = Math.floor(Math.random() * (data.nivel1.length));
+    navigation.navigate({name:'Nivel Um', key: pageKey.toString()})
   }
 
   return (
@@ -63,7 +61,7 @@ export function Level1() {
               <Droppable
                 key={index}
 
-                onEnter={() => { }}
+                onEnter={() => {}}
                 onLeave={() => { }}
 
                 onDrop={({ payload }) => {
@@ -81,7 +79,7 @@ export function Level1() {
                       {...viewProps}
                       style={[viewProps.style, styles.droppable]}
                     >
-                      <Text style={ styles.droppableText }>
+                      <Text style={styles.droppableText}>
                         {s[1]}
                       </Text>
                     </Animated.View>
@@ -123,15 +121,12 @@ export function Level1() {
               </Draggable>
             ))}
           </View>
-
-          <View style={{ marginBottom: 60 }}>
-            <Text>{palavra}</Text>
-            <Button
-              title={'Alterar'}
-              onPress={ nextPalavra  }
-            />
-          </View>
-
+        </View>
+        <View style={{ marginBottom: 80 }}>
+          <Button
+            title={'Alterar'}
+            onPress={nextWord}
+          />
         </View>
       </Provider>
     </>
@@ -171,8 +166,8 @@ const styles = StyleSheet.create({
   },
 
   draggableText: {
-    textAlign: 'center', 
-    color: "#333", 
+    textAlign: 'center',
+    color: "#333",
     fontWeight: "bold"
   },
 
@@ -194,9 +189,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
 
-  droppableText:{
-    color: "#333", 
-    fontWeight: "bold", 
+  droppableText: {
+    color: "#333",
+    fontWeight: "bold",
     fontSize: 25
   },
 
