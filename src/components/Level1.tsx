@@ -17,8 +17,12 @@ import data from '../silabando.json'
 const { Provider, Droppable, Draggable } = createDndContext();
 
 export function Level1() {
+
+  console.log("loaded");
   const navigation = useNavigation();
-  const palavra = Math.floor(Math.random() * (data.nivel1.length));
+  const [palavra, setPalavra] = useState( Math.floor(Math.random() * (data.nivel1.length)));
+  
+
   const image = { uri: data.nivel1[palavra].imgURL };
 
   let sl = data.nivel1[palavra].silabas
@@ -36,7 +40,7 @@ export function Level1() {
     <>
       <Provider>
         <View style={styles.container}>
-          <Text style={styles.texto}>SILABANDO APP</Text>
+          <Text style={styles.texto}>SILABANDO APP { palavra }</Text>
           <View style={{
             padding: 5,
             alignItems: 'center',
