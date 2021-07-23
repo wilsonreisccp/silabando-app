@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,35 +12,55 @@ import { useNavigation } from '@react-navigation/native'
 import { Icon } from 'react-native-elements'
 import { createDndContext } from "react-native-easy-dnd";
 
+import NivelContext from "../contexts/silabandoContext";
 import data from '../silabando.json'
 
 const { Provider, Droppable, Draggable } = createDndContext();
 
 export function Level1() {
+  const { state, setState } = useContext(NivelContext);
 
-  console.log("loaded");
   const navigation = useNavigation();
-  const [palavra, setPalavra] = useState( Math.floor(Math.random() * (data.nivel1.length)));
-  
 
+  const [wordOk , setWordOk ] = useState(1);
+  const [palavra, setPalavra] = useState(Math.floor(Math.random() * (data.nivel1.length)));
   const image = { uri: data.nivel1[palavra].imgURL };
 
   let sl = data.nivel1[palavra].silabas
   let possibilidades = data.nivel1[palavra].possibilidades
 
   const [silabas, setSilabas] = useState(sl);
-  const [items, setItems] = useState(possibilidades);
+  const [items  , setItems  ] = useState(possibilidades);
+  const [next   , setNext   ] = useState(false)
+  
+  function nextWord() {
+    //data.nivel1.splice(palavra, 1);
 
-  function nextWord(){
     const pageKey = Math.floor(Math.random() * (data.nivel1.length));
-    navigation.navigate({name:'Nivel Um', key: pageKey.toString()})
+    
+    if(state.count == 2){
+      setState({
+        ...state,
+        count: 0,
+        nivel: 2
+      })
+
+      navigation.navigate({ name: 'Nivel Dois', key: pageKey.toString() })
+    }else{
+      setState({
+        ...state,
+        count: state.count + 1
+      })
+
+      navigation.navigate({ name: 'Nivel Um', key: pageKey.toString() })
+    }
   }
 
   return (
     <>
       <Provider>
         <View style={styles.container}>
-          <Text style={styles.texto}>SILABANDO APP { palavra }</Text>
+          <Text style={styles.texto}>SILABANDO APP</Text>
           <View style={{
             padding: 5,
             alignItems: 'center',
@@ -65,15 +85,19 @@ export function Level1() {
               <Droppable
                 key={index}
 
-                onEnter={() => {}}
+                onEnter={() => { }}
                 onLeave={() => { }}
-
                 onDrop={({ payload }) => {
-                  if (payload[0] == s[2]) {
+                  if (payload[0] === s[2]) {
                     sl[s[0]][1] = s[2]
-                    setSilabas(sl)
+                    setSilabas(sl);
+                    
                     possibilidades[payload[1]] = "   "
-                    setItems([...possibilidades])
+                    setItems([...possibilidades]);
+
+                    setWordOk(wordOk + 1);
+
+                    (wordOk == silabas.length) ? setNext(true) : ""
                   }
                 }}
               >
@@ -104,11 +128,9 @@ export function Level1() {
             {items.map((item, index) => (
               <Draggable
                 key={index}
-                onDragStart={() => {
-                }}
-                onDragEnd={() => {
-                }}
-                payload={[item, index]}
+                onDragStart={() => {}}
+                onDragEnd  ={() => {}}
+                payload    ={[item, index]}
               >
                 {({ viewProps }) => {
                   return (
@@ -126,12 +148,11 @@ export function Level1() {
             ))}
           </View>
         </View>
-        <View style={{ marginBottom: 80 }}>
-          <Button
-            title={'Alterar'}
-            onPress={nextWord}
-          />
-        </View>
+        { next ?<View style={{ marginBottom: 80 }}>
+                  <Button title='Próximo' onPress={nextWord}/>
+                </View>
+                : <View />
+        }
       </Provider>
     </>
   )
