@@ -155,6 +155,161 @@
       ]
     }
   ],
-  "nivel2": [],
+  "nivel2": [
+    {
+      "palavra": "canudo",
+      "imgURL": "https://i.postimg.cc/505zm3WS/canudo.png",
+      "silabas": [
+        ["0","  ","CA"],
+        ["1","  ","NU"],
+        ["2","  ","DO"]
+      ],
+      "possibilidades": [
+        "TA",
+        "NU",
+        "DO",
+        "CA",
+        "PA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
+      ]
+    },
+    {
+      "palavra": "caneta",
+      "imgURL": "https://i.postimg.cc/V6PMMhpN/caneta.png",
+      "silabas": [
+        ["0","  ","CA"],
+        ["1","  ","NE"],
+        ["2","  ","TA"]
+      ],
+      "possibilidades": [
+        "NE",
+        "TA",
+        "BA",
+        "LE",
+        "CA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
+      ]
+    },
+    {
+      "palavra": "banana",
+      "imgURL": "https://i.postimg.cc/VvYCZCYQ/banana.png",
+      "silabas": [
+        ["0","  ","BA"],
+        ["1","  ","NA"],
+        ["2","  ","NA"]
+      ],
+      "possibilidades": [
+        "NA",
+        "BU",
+        "BA",
+        "CA",
+        "NA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
+      ]
+    },
+    {
+      "palavra": "abacate",
+      "imgURL": "https://i.postimg.cc/ryCvznpy/abacate.png",
+      "silabas": [
+        ["0","   "," A "],
+        ["1","  ","BA"],
+        ["2","  ","CA"],
+        ["3","  ","TE"]
+      ],
+      "possibilidades": [
+        "TE",
+        "BU",
+        " A ",
+        "CA",
+        "BA"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   ",
+        "   "
+      ]
+    },
+    {
+      "palavra": "cano",
+      "imgURL": "https://i.postimg.cc/jS6hPtKt/cano.png",
+      "silabas": [
+        ["0","  ","CA"],
+        ["1","  ","NO"]
+      ],
+      "possibilidades": [
+        "JO",
+        "NO",
+        "AC",
+        "CA",
+        "BA"
+      ],
+      "drop": [
+        "   ",
+        "   "
+      ]
+    },
+    {
+      "palavra": "menina",
+      "imgURL": "https://i.postimg.cc/0y1fzrTV/menina.png",
+      "silabas": [
+        ["0","  ","ME"],
+        ["1","  ","NI"],
+        ["2","  ","NA"]
+      ],
+      "possibilidades": [
+        "GO",
+        "NI",
+        "NA",
+        "CA",
+        "ME"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   "
+      ]
+    },
+    {
+      "palavra": "hipopótamo",
+      "imgURL": "https://i.postimg.cc/9FX8bDt7/hipopotamo.png",
+      "silabas": [
+        ["0","  ","HI"],
+        ["1","  ","PO"],
+        ["2","  ","PÓ"],
+        ["3","  ","TA"],
+        ["4","  ","MO"]
+      ],
+      "possibilidades": [
+        "PO",
+        "TA",
+        "HI",
+        "DA",
+        "MO",
+        "BA",
+        "PÓ",
+        "WI"
+      ],
+      "drop": [
+        "   ",
+        "   ",
+        "   ",
+        "   ",
+        "   "
+      ]
+    }
+  ],
   "nivel3": []
 }

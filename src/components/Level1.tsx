@@ -13,7 +13,6 @@ import { Icon } from 'react-native-elements'
 import { createDndContext } from "react-native-easy-dnd";
 
 import NivelContext from "../contexts/silabandoContext";
-import data from '../silabando.json'
 
 const { Provider, Droppable, Draggable } = createDndContext();
 
@@ -22,38 +21,54 @@ export function Level1() {
 
   const navigation = useNavigation();
 
-  const [wordOk , setWordOk ] = useState(1);
-  const [palavra, setPalavra] = useState(Math.floor(Math.random() * (data.nivel1.length)));
-  const image = { uri: data.nivel1[palavra].imgURL };
-
-  let sl = data.nivel1[palavra].silabas
-  let possibilidades = data.nivel1[palavra].possibilidades
+  const [wordOk , setWordOk ] = useState(0);
+  
+  const [palavra, setPalavra] = useState(state.indexWord);
+  
+  let sl = state.data.nivel1[palavra].silabas
+  let possibilidades = state.data.nivel1[palavra].possibilidades
 
   const [silabas, setSilabas] = useState(sl);
   const [items  , setItems  ] = useState(possibilidades);
   const [next   , setNext   ] = useState(false)
+
+  const image = { uri: state.data.nivel1[palavra].imgURL };
   
   function nextWord() {
-    //data.nivel1.splice(palavra, 1);
+    //let aux = state.data;
+    //aux.nivel1.splice(palavra,1);
 
-    const pageKey = Math.floor(Math.random() * (data.nivel1.length));
-    
-    if(state.count == 2){
+    //let pp = Math.floor(Math.random() * (state.data.nivel1.length));
+
+    const pageKey = Math.floor(Math.random() * (1000000));
+
+    if(state.countHit == 5){
       setState({
         ...state,
-        count: 0,
-        nivel: 2
+        countHit: 0,
+        nivel: 1,
+        syllableHit: 0,
+        indexWord: Math.floor(Math.random() * (state.data.nivel1.length))
       })
 
-      navigation.navigate({ name: 'Nivel Dois', key: pageKey.toString() })
+      navigation.navigate({ name: 'Nivel Um', key: pageKey.toString() })
     }else{
       setState({
         ...state,
-        count: state.count + 1
+        countHit: state.countHit + 1,
+        syllableHit: 0,
+        indexWord: Math.floor(Math.random() * (state.data.nivel1.length))
       })
 
       navigation.navigate({ name: 'Nivel Um', key: pageKey.toString() })
     }
+  }
+
+  function syllableHit(){
+    setState({
+      ...state,
+      syllableHit: state.syllableHit + 1
+    })
   }
 
   return (
@@ -90,14 +105,37 @@ export function Level1() {
                 onDrop={({ payload }) => {
                   if (payload[0] === s[2]) {
                     sl[s[0]][1] = s[2]
+
+                    fetch("")
+                      .then(() => setSilabas(sl))
+                      .then(() => { 
+                        possibilidades[payload[1]] = "   ";
+                        setItems([...possibilidades]);
+                        setWordOk(wordOk + 1);
+                       })
+                      .then(() => {syllableHit();})
+                      .then(() => {
+                        if(state.syllableHit == silabas.length - 1){
+                          console.log('Entrou', wordOk)
+                          setNext(true)
+                        }
+                      })
+
+                    /*
                     setSilabas(sl);
                     
                     possibilidades[payload[1]] = "   "
                     setItems([...possibilidades]);
 
                     setWordOk(wordOk + 1);
+                    //syllableHit();
 
-                    (wordOk == silabas.length) ? setNext(true) : ""
+                    if(wordOk >= silabas.length){
+                      console.log('Entrou', wordOk)
+                      setNext(true)
+                    }
+                    */
+
                   }
                 }}
               >
@@ -148,7 +186,7 @@ export function Level1() {
             ))}
           </View>
         </View>
-        { next ?<View style={{ marginBottom: 80 }}>
+        { 2 == 2 ?<View style={{ marginBottom: 80 }}>
                   <Button title='Próximo' onPress={nextWord}/>
                 </View>
                 : <View />
@@ -176,7 +214,6 @@ const styles = StyleSheet.create({
   draggable: {
     minWidth: 35,
     height: 35,
-
     padding: 5,
     shadowColor: "#000",
     shadowOpacity: 0.2,
@@ -252,5 +289,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "left",
   }
-
 });
